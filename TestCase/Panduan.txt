@@ -10,3 +10,5 @@ testdir : '.' merupakan config berada di folder testcase
 
 kemudian didalam object projects ada beberapa name yang tersedia mulai dari setup untuk folder setup yang akan di jalankan terlebih ahulu.
 kemudian ada credential setelah itu dijalankan didalamnya dan yang terakhir ada folder feature dengan dependencies setup menggunakan storage state di file auth.json
+
+Keep Learning
