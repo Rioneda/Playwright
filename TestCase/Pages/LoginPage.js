@@ -8,6 +8,7 @@ export class LoginPage {
     this.passwordInput = page.locator('[data-test="password"]')
     this.loginButton = page.locator('[data-test="login-button"]')
     this.title = page.locator('[data-test="title"]')
+	this.errorlogin = page.locator('[data-test="error"]')
   }
 
   async goto() {

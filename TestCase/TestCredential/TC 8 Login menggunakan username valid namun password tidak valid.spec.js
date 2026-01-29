@@ -1,26 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage'
 import { takeScreenshot } from '../utils/screenshot';
 
 test('TC 8 Login menggunakan username valid namun tidak diisi password', async ({ page },testInfo) => {
-  await page.goto('https://www.saucedemo.com/');
-  
-  // Screenshot awal
-  await takeScreenshot(page, testInfo, 'before');
+  const loginPage = new LoginPage(page)
 
-  await expect(page.locator('[data-test="login-button"]')).toBeVisible();
+  await loginPage.goto()
+  await loginPage.fillLoginForm('visual_user', '')
   
-  // Isi username (kosong)
-  await page.locator('[data-test="username"]').fill('visual_user');
+  await takeScreenshot(page, testInfo, 'before')
+  
+  await loginPage.clickLogin()
 
-  // Isi password
-  await page.locator('[data-test="password"]').fill('');
+  await expect(loginPage.errorlogin).toContainText('Epic sadface: Password is required')
 
-  // Klik login
-  await page.locator('[data-test="login-button"]').click();
-  
-  // memastikan text error ada
-  await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface: Password is required');
-  
-  // Screenshot akhir
-  await takeScreenshot(page, testInfo, 'after');
+  await takeScreenshot(page, testInfo, 'after')
 });
+
+  

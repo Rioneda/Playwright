@@ -1,26 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage'
 import { takeScreenshot } from '../utils/screenshot';
 
 test('TC 4 Login menggunakan Username problem_user, Password secret_sauce', async ({ page },testInfo) => {
-  await page.goto('https://www.saucedemo.com/');
-  
-  // Screenshot awal
-  await takeScreenshot(page, testInfo, 'before');
+  const loginPage = new LoginPage(page)
 
-  await expect(page.locator('[data-test="login-button"]')).toBeVisible();
+  await loginPage.goto()
+  await loginPage.fillLoginForm('problem_user', 'secret_sauce')
   
-  // Isi username (kosong)
-  await page.locator('[data-test="username"]').fill('problem_user');
+  await takeScreenshot(page, testInfo, 'before')
+  
+  await loginPage.clickLogin()
 
-  // Isi password
-  await page.locator('[data-test="password"]').fill('secret_sauce');
+  await expect(loginPage.title).toContainText('Products')
 
-  // Klik login
-  await page.locator('[data-test="login-button"]').click();
-  
-  // memastikan text products ada
-  await expect(page.locator('[data-test="title"]')).toContainText('Products');
-  
-  // Screenshot akhir
-  await takeScreenshot(page, testInfo, 'after');
+  await takeScreenshot(page, testInfo, 'after')
 });
