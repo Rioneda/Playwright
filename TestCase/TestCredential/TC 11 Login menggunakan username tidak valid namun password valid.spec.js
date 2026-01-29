@@ -1,26 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage'
 import { takeScreenshot } from '../utils/screenshot';
 
 test('TC 11 Login menggunakan username tidak valid namun password valid', async ({ page },testInfo) => {
-  await page.goto('https://www.saucedemo.com/');
-  
-  // Screenshot awal
-  await takeScreenshot(page, testInfo, 'before');
+  const loginPage = new LoginPage(page)
 
-  await expect(page.locator('[data-test="login-button"]')).toBeVisible();
+  await loginPage.goto()
+  await loginPage.fillLoginForm('TEST_user', 'secret_sauce')
   
-  // Isi username (kosong)
-  await page.locator('[data-test="username"]').fill('TEST_user');
+  await takeScreenshot(page, testInfo, 'before')
+  
+  await loginPage.clickLogin()
 
-  // Isi password
-  await page.locator('[data-test="password"]').fill('secret_sauce');
+  await expect(loginPage.errorlogin).toContainText('Epic sadface: Username and password do not match any user in this service')
 
-  // Klik login
-  await page.locator('[data-test="login-button"]').click();
-  
-  // memastikan text error ada
-  await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface: Username and password do not match any user in this service');
-  
-  // Screenshot akhir
-  await takeScreenshot(page, testInfo, 'after');
+  await takeScreenshot(page, testInfo, 'after')
 });
+
+  
