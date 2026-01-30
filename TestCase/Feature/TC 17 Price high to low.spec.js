@@ -1,17 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { InventoryPage } from '../pages/InventoryPage';
 import { takeScreenshot } from '../utils/screenshot';
 
 test('TC 17 Price high to low', async ({ page }, testInfo) => {
-  await page.goto('https://www.saucedemo.com/inventory.html');
+  const inventoryPage = new InventoryPage(page)
+  
+  await inventoryPage.goto()
   
   // Screenshot awal
   await takeScreenshot(page, testInfo, 'before-sorting');
   
     // Pilih sorting Low to High
-await page.locator('[data-test="product-sort-container"]').selectOption('hilo');
+await inventoryPage.sorting.selectOption('hilo');
 
 // Ambil semua harga setelah sorting
-const prices = await page.locator('.inventory_item_price').allTextContents();
+const prices = await inventoryPage.alLocatorprice.allTextContents();
 
   //console.log('Harga (string dari UI):', prices);
 
