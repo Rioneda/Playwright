@@ -11,6 +11,29 @@ testdir : '.' merupakan config berada di folder testcase
 kemudian didalam object projects ada beberapa name yang tersedia mulai dari setup untuk folder setup yang akan di jalankan terlebih ahulu.
 kemudian ada credential setelah itu dijalankan didalamnya dan yang terakhir ada folder feature dengan dependencies setup menggunakan storage state di file auth.json
 
-Keep Learning
+playwright.config.ts
+File untuk define config,pengaturan awal mula file yang dijalankan ada disini.
 
-CheckBranch
+Folder Data file DataDrivePlaywright.xlsx
+Merupakan data excel untuk penggunaan data driven
+
+Folder Feature
+Merupakan test case yang memerlukan authentication
+
+Folder Pages semua file
+merupakan POM
+
+Folder Screenshot
+Hasil screenshot akan masuk ke dalam folder ini
+
+Folder Services
+On going progress
+
+Folder Setup dengan file auth.js
+merupakan storage state untuk authentication yang dijalankan terlebih dahulu sebelum menjalankan semua testcase di folder feature.
+
+Folder TestCredential
+Merupakan test case khusus untuk credential
+
+Folder Utils
+Merupakan utility excelreader untuk membaca file excel dan screenshot.js untuk keperluan screenshot
