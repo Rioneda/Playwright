@@ -26,6 +26,6 @@ jobs:
         working-directory: TestCase
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright@latest test
         working-directory: TestCase
     
