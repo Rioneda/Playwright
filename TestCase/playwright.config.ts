@@ -1,6 +1,35 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
+  testDir: '.', // tetap OK
+
+  globalSetup: './Setup/auth.setup.js',
+
+  use: {
+    screenshot: 'only-on-failure',
+    trace: 'on-first-retry',
+    video: 'retain-on-failure',
+  },
+
+  projects: [
+    {
+      name: 'credential',
+      testMatch: /TestCredential\/.*\.spec\.js/,
+    },
+
+    {
+      name: 'authenticated',
+      testMatch: /Feature\/.*\.spec\.js/,
+      use: {
+        storageState: 'auth.json',
+      },
+    },
+  ],
+});
+/*
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
   testDir: '.', // PENTING: karena config ada di TestCase
   
   use: {
@@ -34,3 +63,4 @@ export default defineConfig({
     },
   ],
 });
+*/
