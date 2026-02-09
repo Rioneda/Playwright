@@ -14,6 +14,7 @@ function getTimeStamp() {
   return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
 }
 
+
 export async function takeScreenshot(page, testInfo, stepName = 'step') {
   const folderPath = 'screenshots';
 

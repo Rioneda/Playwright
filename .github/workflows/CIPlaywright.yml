@@ -20,12 +20,13 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: TestCase
+       
+        - name: Install Playwright Browsers
+  run: npx playwright install --with-deps
+  working-directory: TestCase
 
-      - name: Install Playwright Browsers
-        run: npx playwright@latest install --with-deps
-        working-directory: TestCase
+- name: Run Playwright tests
+  run: npx playwright test
+  working-directory: TestCase
 
-      - name: Run Playwright tests
-        run: npx playwright@latest test
-        working-directory: TestCase
     
