@@ -11,15 +11,4 @@ export class SauceLabsPage {
   async goto() {
     await this.page.goto('https://www.saucedemo.com/inventory.html')
   }
-/*
-  
-
-  async fillLoginForm(username, password) {
-    await this.usernameInput.fill(username)
-    await this.passwordInput.fill(password)
-  }
-  
-  async clickLogin(){
-	await this.loginButton.click()  
-	} */
 }

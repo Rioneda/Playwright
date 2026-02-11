@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { takeScreenshot } from '../utils/screenshot';
+import { takeScreenshot } from '../utils/screenshot.js';
 
 test('TC 1 Memastikan dapat akses web saucedemo.spec', async ({ page },testInfo) => {
   await page.goto('https://www.saucedemo.com/');

@@ -18,15 +18,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
         working-directory: TestCase
-       
-        - name: Install Playwright Browsers
-  run: npx playwright install --with-deps
-  working-directory: TestCase
+        run: npm install
 
-- name: Run Playwright tests
-  run: npx playwright test
-  working-directory: TestCase
+      - name: Install Playwright Browsers
+        working-directory: TestCase
+        run: npx playwright install --with-deps
 
-    
+      - name: Run Playwright tests
+        working-directory: TestCase
+        run: npx playwright test -c playwright.config.ts
