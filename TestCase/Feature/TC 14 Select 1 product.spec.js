@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { InventoryPage } from '../pages/InventoryPage';
-import { takeScreenshot } from '../utils/screenshot';
+import { InventoryPage } from '../pages/InventoryPage.js';
+import { takeScreenshot } from '../utils/screenshot.js';
 
 test('TC 14 Select 1 product', async ({ page },testInfo) => {
   const inventoryPage = new InventoryPage(page)

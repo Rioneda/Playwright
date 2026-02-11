@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test'
-import { LoginPage } from '../pages/LoginPage'
-import { readExcel } from '../utils/excelReader'
-import { takeScreenshot } from '../utils/screenshot'
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage.js';
+import { readExcel } from '../utils/excelReader.js';
+import { takeScreenshot } from '../utils/screenshot.js';
 
 const data = readExcel('Login')
   .find((d, index) => d.testCase === 'TC 2')
